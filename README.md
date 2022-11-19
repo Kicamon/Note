@@ -1,6 +1,8 @@
 # LawNote
 这是小冷的法学笔记，苦逼法学生QAQ
 
+<strong>如果发现内容有错误可以麻烦告诉一下小冷咩，谢谢大家❤</strong>
+
 ## 目前的笔记有：
 1. civil law（民法）
     1. [property law（物权法）](https://github.com/Kicamon/LawNote/blob/master/civil%20law/property%20law/property%20low.md)
