@@ -31,3 +31,11 @@
 |     represented    |     表现，体现在     |
 |      initially     |        最初地        |
 |        split       | 分裂，使分裂，分裂的 |
+|        lake        |          湖          |
+|      a set of      |      一组，一套      |
+|       exists       |         存在         |
+|        path        |         路径         |
+|      snowflake     |         雪花         |
+|        graph       |          图          |
+|      generated     |        生成的        |
+|       vertex       |         顶点         |
