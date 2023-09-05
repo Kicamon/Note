@@ -9,3 +9,4 @@
 | [criminal law cr](./criminal_law_cr.md)               | 刑法学各论笔记 |
 | [Criminal Procedure Law](./Criminal_Procedure_Law.md) | 刑事诉讼法笔记 |
 | [civil procedure law](./civil_procedure_law.md)       | 民事诉讼法笔记 |
+| [economic law](./economic_law.md)                     | 经济法学笔记   |
