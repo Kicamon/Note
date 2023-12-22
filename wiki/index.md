@@ -7,6 +7,6 @@
 | [patent law](./patent_law.md)                         | 专利法笔记     |
 | [property law](./property_law.md)                     | 物权法笔记     |
 | [criminal law cr](./criminal_law_cr.md)               | 刑法学各论笔记 |
-| [Criminal Procedure Law](./Criminal_Procedure_Law.md) | 刑事诉讼法笔记 |
+| [criminal procedure law](./criminal_procedure_law.md) | 刑事诉讼法笔记 |
 | [civil procedure law](./civil_procedure_law.md)       | 民事诉讼法笔记 |
 | [economic law](./economic_law.md)                     | 经济法学笔记   |
