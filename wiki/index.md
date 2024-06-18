@@ -18,3 +18,5 @@
 | 笔记                                                    | 描述        |
 |---------------------------------------------------------|-------------|
 | [dwm source code analyze](./dwm_source_code_analyze.md) | dwm源码解析 |
+| [linux notes](./linux_notes.md)                         | linux杂记   |
+| [gdb](./gdb.md)                                         | gdb笔记     |
