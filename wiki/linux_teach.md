@@ -3,36 +3,39 @@
 [toc]
 
 ## 1 基础命令
-| 命令              | 参数          | 作用                                                                 |
-|-------------------|---------------|----------------------------------------------------------------------|
-| `ls`              |               | 列出当前目录下的文件和文件夹                                         |
-| `ls`              | `-l`          | 列出当前目录下的文件和文件夹（并显示具体信息）                       |
-| `ls`              | `-a`          | 列出当前目录下的文件和文件夹（包括隐藏文件和文件夹）                 |
-| `ls`              | `-al` / `-la` | 列出当前目录下的文件和文件夹（包括隐藏文件和文件夹，并显示具体信息） |
-| `cd`              |               | 跳转到目标目录，`.`表示当前目录，`..`表示上一目录                    |
-| `clear` / `<c-l>` |               | 清屏                                                                 |
-| `pwd`             |               | 显示当前目录位置                                                     |
-| `cp`              |               | 复制文件                                                             |
-| `cp`              | `-r`          | 复制文件夹                                                           |
-| `cp`              | `-f`          | 复制文件且没有提示                                                   |
-| `mv`              |               | 移动文件                                                             |
-| `rm`              |               | 删除文件                                                             |
-| `touch`           |               | 创建文件                                                             |
-| `cat`             |               | 输出文件内容                                                         |
-| `cat`             | `-n`          | 输出文件内容并显示行号                                               |
-| `shmod`           |               | 设置文件权限                                                         |
-| `head`            |               | 显示文件开头几行                                                     |
-| `head`            | `--lines=`    | 显示文件开头几行，且指定行数                                         |
-| `tail`            |               | 显示文件结尾几行                                                     |
-| `head`            | `--lines=`    | 显示文件结尾几行，且指定行数                                         |
+
+| 命令             | 参数         | 作用                                                                 |
+|------------------|--------------|----------------------------------------------------------------------|
+| `ls`             |              | 列出当前目录下的文件和文件夹                                         |
+| `ls`             | `-l`         | 列出当前目录下的文件和文件夹（并显示具体信息）                       |
+| `ls`             | `-a`         | 列出当前目录下的文件和文件夹（包括隐藏文件和文件夹）                 |
+| `ls`             | `-al`, `-la` | 列出当前目录下的文件和文件夹（包括隐藏文件和文件夹，并显示具体信息） |
+| `cd`             |              | 跳转到目标目录，`.`表示当前目录，`..`表示上一目录                    |
+| `cd`             | `-`          | 跳转到前一个目录                                                     |
+| `clear`, `<c-l>` |              | 清屏                                                                 |
+| `pwd`            |              | 显示当前目录位置                                                     |
+| `cp`             |              | 复制文件                                                             |
+| `cp`             | `-r`         | 复制文件夹                                                           |
+| `cp`             | `-f`         | 复制文件且没有提示                                                   |
+| `mv`             |              | 移动文件                                                             |
+| `rm`             |              | 删除文件                                                             |
+| `touch`          |              | 创建文件                                                             |
+| `cat`            |              | 输出文件内容                                                         |
+| `cat`            | `-n`         | 输出文件内容并显示行号                                               |
+| `shmod`          |              | 设置文件权限                                                         |
+| `head`           |              | 显示文件开头几行                                                     |
+| `head`           | `--lines=`   | 显示文件开头几行，且指定行数                                         |
+| `tail`           |              | 显示文件结尾几行                                                     |
+| `head`           | `--lines=`   | 显示文件结尾几行，且指定行数                                         |
 
 ## 2 用户管理
 
 ### 2.1 创建新用户
 > 如果当前只有一个`root`用户，那么最好创建一个非`root`用户，具体方式如下
 
-1. 查看`/etc/sudoers`文件的内容
-2. 检查`## User privilege specification`部分的内容，如：
+1. 安装`sudo`命令：`apt install sudo`
+2. 查看`/etc/sudoers`文件的内容
+3. 检查`## User privilege specification`部分的内容，如：
   ```shell
   ##
   ## User privilege specification
@@ -43,8 +46,9 @@
   %wheel ALL=(ALL:ALL) ALL
   ```
   这里存在两个用户组，分别是`root`和`wheel`，不同的发行版第二个用户组可能会有不同，如果被注释了取消注释皆可
-3. 使用命令`useradd -m -G wheel -s /bin/bash {myusername}`创建新用户
-4. 使用`passwd {myusername}`设置用户密码
+
+4. 使用命令`useradd -m -G wheel -s /bin/bash {myusername}`创建新用户
+5. 使用`passwd {myusername}`设置用户密码
 
 ### 2.2 其他用户操作
 | 操作                                 | 作用               |
@@ -113,8 +117,73 @@
 
 ### 3.3 利用vimscript创建新功能
 
-## 4 写shell脚本
-[菜鸟教程](https://www.runoob.com/linux/linux-shell.html)
+- 如下是一个快速运行代码的功能：
+```vim
+nmap <F5> :call Run()<CR>
+function! Run()
+  echo " compiling..."
+  if &filetype == 'c'
+    :! gcc "%" -o "%<" && "./%<" && rm -f "./%<"
+  elseif &filetype == 'cpp'
+    :! g++ "%" -o "%<" -Wall -std=c++20 && "./%<" && rm -f "./%<"
+  elseif &filetype == 'python'
+    :! python "%"
+  end
+  redraw!
+  echohl WarningMsg | echo " Running finish! :-)"
+endfunction
+```
+
+## 4 tmux的使用和基本配置
+
+### 4.1 tmux的作用和结构
+1. 作用：增强终端的功能，提供多窗口、分屏、挂起等功能
+2. 结构：
+```
+tmux:
+├─session 0
+│ ├─window 0
+│ │ ├─pane 0
+│ │ └─pane 1
+│ └─window 1
+│   ├─pane 0
+│   ├─pane 1
+│   └─pane 2
+├─session 1
+└─session 2
+```
+
+### 4.2 tmux的基本使用
+| 命令/快捷键 | 参数           | 作用                      |
+|-------------|----------------|---------------------------|
+| `tmux`      |                | 创建新的session           |
+| `tmux`      | `attach`       | 进入被挂起的session       |
+| `tmux`      | `new -n`       | 创建新的session并为其命名 |
+| `tmux`      | `ls`           | 查看所有的session         |
+| `prefix`    | `c`            | 创建新的window            |
+| `prefix`    | `{num}`        | 切换到第{num}个window     |
+| `prefix`    | `n`            | 切换到下一个window        |
+| `prefix`    | `p`            | 切换到上一个window        |
+| `prefix`    | `&`            | 关闭当前window            |
+| `prefix`    | `%`            | 在右侧创建一个pane        |
+| `prefix`    | `"`            | 在下侧创建一个pane        |
+| `prefix`    | 方向键         | 切换pane                  |
+| `prefix`    | 同时按住方向键 | 改变pane的大小            |
+| `prefix`    | `q`            | 选择pane                  |
+| `prefix`    | `z`            | 最大化/恢复pane           |
+| `prefix`    | `x`            | 关闭pane                  |
+| `prefix`    | `w`            | 查看所有window            |
+| `prefix`    | `d`            | 挂起session               |
+
+### 4.3 tmux的配置
+| 配置内容                                              | 作用                     |
+|-------------------------------------------------------|--------------------------|
+| `unbind c-b`                                          | 取消默认prefix           |
+| `set -g prefix C-Space`                               | 设置prefix               |
+| `bind -n M-v copy-mode`                               | 设置复制模式的快捷键     |
+| `bind -T copy-mode-vi v send-keys -X begin-selection` | 在复制模式中使用vi快捷键 |
+| `prefix="#{?client_prefix,⚡,}"`                      | 设置prefix提示符         |
+
 
 ## 5 进阶命令（常用命令，管道和环境变量）
 
@@ -144,20 +213,24 @@ env #显示当前用户的变量
 export #设置环境变量
 ```
 
-## 6 ssh基本使用
+## 6 写shell脚本
 
-### 6.1 创建ssh密钥
+[菜鸟教程](https://www.runoob.com/linux/linux-shell.html)
+
+## 7 ssh基本使用
+
+### 7.1 创建ssh密钥
 > 使用命令`ssh-keygen`创建密钥，结束后会在`~/.ssh`目录中多出两个文件：
 - `id_rsa`：私钥
 - `id_rsa.pub`：公钥
 
-### 6.2 利用ssh登录服务器
+### 7.2 利用ssh登录服务器
 | 命令                          | 作用                                                               |
 |-------------------------------|--------------------------------------------------------------------|
 | `ssh {user}@{hostname}`       | 登录服务器，{user}表示用户名，{hostname}表示服务器的ip地址或者域名 |
 | `ssh {user}@{hostname} -p 22` | 登录服务器的22端口                                                 |
 
-### 6.3 快速登录配置
+### 7.3 快速登录配置
 1. 在`~/.ssh/`中创建文件`config`
 2. 编辑`config`文件：
 ```conf
@@ -172,26 +245,26 @@ Host servername2
 
 之后就能通过`ssh servername1`来快速连接相关的服务器
 
-### 6.4 免密登录
+### 7.4 免密登录
 > 将公钥中的内容复制到服务器的`~/.ssh/authorized_keys`文件里
 
-### 6.5 scp传输文件
+### 7.5 scp传输文件
 | 命令                               | 作用                                             |
 |------------------------------------|--------------------------------------------------|
 | `scp {file} {hostname}`            | 将文件{file}复制到{hostname}中                   |
 | `scp -r {folder} {hostname}`       | 将文件夹{folder}复制到{hostname}中               |
 | `scp {file} {hostname}:/home/user` | 将文件{file}复制到{hostname}的`/home/user`目录中 |
 
-## 7 git的基本命令
+## 8 git的基本命令
 
-### 7.1 初始化设置
+### 8.1 初始化设置
 | 命令                                            | 作用                 |
 |-------------------------------------------------|----------------------|
 | `git config --global user.name "{username}"`    | 设置全局的用户名     |
 | `git config --global user.email "{email}"`      | 设置全局的邮箱       |
 | `git config --global init.defaultBranch 'main'` | 设置默认分支为`main` |
 
-### 7.2 常用命令
+### 8.2 常用命令
 | 命令                                                   | 作用                                                       |
 |--------------------------------------------------------|------------------------------------------------------------|
 | `git init`                                             | 将当前目录设置成git仓库                                    |
