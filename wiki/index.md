@@ -21,7 +21,6 @@
 | [gdb](./gdb.md)                                         | gdb笔记       |
 | [makefile](./makefile.md)                               | makefile笔记  |
 | [git notes](./git_notes.md)                             | git笔记       |
-| [linux terminal](./linux_terminal.md)                   | linux终端配置 |
 | [linux teach](./linux_teach.md)                         | linux教案     |
 
 ## 英语
