@@ -44,6 +44,9 @@ sudo nvim /etc/systemd/system.conf
 2. 执行
 执行`sudo systemctl daemon-reload`
 
+### 同步时间
+`sudo timedatectl set-ntp true`
+
 
 ### 网络
 检测网络是否连接

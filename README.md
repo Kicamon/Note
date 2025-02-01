@@ -3,17 +3,28 @@
 
 **如果发现内容有错误可以麻烦告诉一下小冷咩，谢谢大家❤**
 
-笔记在wiki里，对照index.md找对应的笔记就好了～
+| 笔记                                                  | 描述           |
+|-------------------------------------------------------|----------------|
+| [commercial law](./commercial_law.md)                 | 商法学笔记     |
+| [patent law](./patent_law.md)                         | 专利法笔记     |
+| [property law](./property_law.md)                     | 物权法笔记     |
+| [criminal law cr](./criminal_law_cr.md)               | 刑法学各论笔记 |
+| [criminal procedure law](./criminal_procedure_law.md) | 刑事诉讼法笔记 |
+| [civil procedure law](./civil_procedure_law.md)       | 民事诉讼法笔记 |
+| [economic law](./economic_law.md)                     | 经济法学笔记   |
+| [labor law](./labor_law.md)                           | 劳动法笔记     |
+| [administrative law](./administrative_law.md)         | 行政法笔记     |
 
+---
 
-### 一些资料的整理：
-
-#### 英语：
-
-| 资料                           | 地址                                                          |
-|--------------------------------|---------------------------------------------------------------|
-| 从0开始学习英语语法            | https://github.com/hzpt-inet-club/english-note                |
-| 英语进阶指南                   | https://github.com/byoungd/English-level-up-tips/tree/master  |
-| 英语单词肌肉记忆软件qwerty     | https://github.com/Kaiyiwing/qwerty-learner                   |
-| 专为程序员编写的英语学习指南   | https://github.com/yujiangshui/A-Programmers-Guide-to-English |
-| 经济学人，纽约客等外刊杂志下载 | https://github.com/hehonghui/awesome-english-ebooks           |
+| 笔记                                                    | 描述               |
+|---------------------------------------------------------|--------------------|
+| [data structure](./data_structure.md)                   | 数据结构笔记       |
+| [dwm source code analyze](./dwm_source_code_analyze.md) | dwm源码解析        |
+| [linux notes](./linux_notes.md)                         | linux杂记          |
+| [gdb](./gdb.md)                                         | gdb笔记            |
+| [linux teach](./linux_teach.md)                         | linux教案          |
+| [x11 notes](./x11_notes.md)                             | x11笔记            |
+| [root words and affix](./root_words_affix.md)           | 英语词根           |
+| [mathematical analysis](./mathematical_analysis.md)     | 数学分析知识点总结 |
+| [image managemen](./image_managemen.md)                 | 形象管理           |
