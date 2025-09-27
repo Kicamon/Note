@@ -18,13 +18,13 @@ arch-chroot /mnt
 `xdg-user-dirs-update`创建：`Desktop`,`Documents`,`Downloads`,`Music`,`Pictures`,`Videos`目录
 
 ### 免密登录
+创建文件`/etc/systemd/system/getty@tty1.service.d/autologin.conf`，填写下面内容：
 ```shell
-cd /etc/systemd/system/getty.target.wants
-sudo vim getty@tty1.service
+[Service]
+ExecStart=
+ExecStart=-/sbin/agetty -o '-p -f -- \\u' --noclear --autologin KicamonIce %I $TERM
 ```
 
-找到`ExecStart=-/sbin/agetty -o '-p -- \\u' --noclear - $TERM`
-将其改成`ExecStart=-/sbin/agetty -o '-p -f -- \\u' --noclear --autologin 用户名 %I $TERM`
 
 ### 自动启动
 1. 启动startx：在bashrc或者zshrc中添加
@@ -33,6 +33,16 @@ sudo vim getty@tty1.service
 ```
 
 2. 启动图形界面（以dwm为例）：在`~/.xinitrc`末尾添加`exec dwm`
+
+### 持久化互换`ESC`和`Capslock`
+创建文件`sudo nano /etc/X11/xorg.conf.d/00-keyboard.conf`，填写下面内容：
+```shell
+Section "InputClass"
+    Identifier "system-keyboard"
+    MatchIsKeyboard "on"
+    Option "XkbOptions" "caps:swapescape"
+EndSection
+```
 
 ### 关机时间长
 1. 更改等待时间

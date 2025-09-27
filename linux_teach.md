@@ -221,6 +221,7 @@ tmux:
 ## 6 shell脚本的编写
 
 [菜鸟教程](https://www.runoob.com/linux/linux-shell.html)
+[shell脚本教程](./shell脚本教程.md)
 
 ## 7 ssh基本使用
 
