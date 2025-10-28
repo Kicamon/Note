@@ -91,3 +91,14 @@ otd-gui
 2. 性能监控：[mangohud](https://github.com/flightlessmango/MangoHud)
     - 常规启动方式`mangohud 游戏`
     - steam：在 Steam 库中右键游戏封面 > 点击 `属性...` > 侧边栏 `通用` > 在 `启动选项` 中添加 `MANGOHUD=1 %command%`
+
+### Podman
+1. 拉取镜像：到[docker hub](https://hub.docker.com/)官网上拉取即可，如**debian**：`podman pull docker.io/debian`
+2. 查看镜像：`docker images`命令可以列举本地的镜像
+3. 创建并运行debian容器：`podman run -it --name debian_dev debian bash`(debian_dev为容器名，可以任意取名)
+4. 列举本地容器：
+    1. `podman ps`：查看正在运行的容器
+    2. `podman ps -a`：查看所有的容器
+5. 运行本地容器：
+    1. `podman start debian_dev`
+    2. `podman attach debian_dev`
