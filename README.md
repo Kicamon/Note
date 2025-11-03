@@ -29,3 +29,4 @@
 | [mathematical analysis](./mathematical_analysis.md)     | 数学分析知识点总结 |
 | [image managemen](./image_managemen.md)                 | 形象管理           |
 | [pedagogy](./pedagogy.md)                               | 教育学笔记         |
+| [blogs](./blog/blogs.md)                                | 博客文章           |
