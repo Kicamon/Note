@@ -30,3 +30,9 @@
 | [image managemen](./image_managemen.md)                 | 形象管理           |
 | [pedagogy](./pedagogy.md)                               | 教育学笔记         |
 | [blogs](./blog/blogs.md)                                | 博客文章           |
+
+---
+
+| 笔记                | 描述                 |
+|---------------------|----------------------|
+| [yd_L1](./yd_L1.md) | L1常见题型复习与练习 |
