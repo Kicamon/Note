@@ -8,4 +8,5 @@
 - [法学](./law/law.md)
 - [工作](./work/work.md)
 - [博客](./blog/blogs.md)
+- [写点东西](./some_think/some_think.md)
 - [其他](./other/other.md)
